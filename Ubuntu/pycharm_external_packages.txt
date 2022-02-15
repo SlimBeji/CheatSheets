@@ -1,0 +1,12 @@
+[Black]
+$PyInterpreterDirectory$/black
+$FileDir$
+$ContentRoot$
+
+[Isort]
+$PyInterpreterDirectory$/isort
+$FileDir$
+$ContentRoot$
+
+[flake8]
+$PyInterpreterDirectory$/flake8

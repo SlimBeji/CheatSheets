@@ -1,0 +1,70 @@
+# ============ special files and folders ===========
+# hide files in nautilus
+.hidden
+
+# list of environment path (executable bash commands)
+echo $PATH
+
+# ================== home folder ==================
+# terminal configuration (/etc/bash.bashrc for all users)
+~/.bashrc
+
+# nano editor configuration (/etc/nanorc for all users)
+~/.nanorc
+
+# vim configuration (/etc/vim/vimrc for all users)
+~/.vimrc
+
+# folder for the ssh keys (root ssh key in /root.ssh)
+~/.ssh
+
+# Local installations for user (anaconda, pyenv, etc...)
+~/.local
+
+# ================== /etc folder ==================
+# configuration of hostnames
+/etc/hosts
+
+# list of packages sources
+/etc/apt/sources.list
+
+# directory containing package sources files
+/etc/apt/sources.list.d
+
+# where the system services are installed
+/etc/systemd/system
+
+# bash configuration
+/etc/bash.bashrc
+
+# nano configuartion
+/etc/nanorc
+
+# list of all users
+/etc/passwd
+
+# list of all groups
+/etc/group
+
+# os informations
+/etc/os-release
+
+# ================== /usr folder ==================
+# desktop and shortcuts files
+/usr/share/applications
+
+# ================== /opt folder ==================
+# third party packages
+/opt
+
+# ================== /var folder ==================
+# crash logs
+/var/crash/*
+
+# ================== /dev folder ==================
+# redirect errors to this location
+/dev/null
+
+# ================== /root folder ==================
+# ssh keys of root
+/root/.ssh

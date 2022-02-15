@@ -1,0 +1,22 @@
+FROM python:3.9-slim
+
+RUN apt-get update && apt-get install -y git
+
+# Add our code
+WORKDIR app
+
+#USE ADD for .tar.gz files or urls
+COPY * /app/
+
+# VOLUME my-app-logs:/app/logs
+
+RUN pip install --upgrade pip && \
+  pip install pipenv && \
+  pipenv install --dev --system --deploy --ignore-pipfile
+
+ENV PORT=5000
+EXPOSE $PORT
+
+ENTRYPOINT ["echo 'Will always get executed even with docker exec -it'"]
+CMD flask run --host=0.0.0.0
+# CMD ["gunicorn", "-b", "0.0.0.0:5000", "wsgi:app"]

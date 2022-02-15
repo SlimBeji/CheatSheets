@@ -1,0 +1,61 @@
+version: '3'
+services:
+  rq-dashboard:
+    image: eoranged/rq-dashboard
+    ports:
+      - 9181:9181
+    environment:
+      RQ_DASHBOARD_REDIS_URL: "redis://redis:6379/0"
+      RQ_DASHBOARD_USERNAME: rq
+      RQ_DASHBOARD_PASSWORD: password
+    depends_on:
+      - redis
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
+      POSTGRES_DB: docker
+  redis:
+    image: redis:alpine
+  web:
+    image: podcast-host.web
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    env_file:
+      - ./.env
+    volumes:
+      - ./:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+      - redis
+  worker:
+    image: podcast-host.web
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    volumes:
+      - ./:/app/
+    command: flask rq worker --logging_level=DEBUG
+    depends_on:
+      - redis
+      - db
+  scheduler:
+    image: podcast-host.web
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    volumes:
+      - ./:/app/
+    command: flask rq scheduler
+    depends_on:
+      - redis
+      - db
