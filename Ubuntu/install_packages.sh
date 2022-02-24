@@ -139,7 +139,10 @@ sudo apt-get update
 sudo apt-get remove docker docker-engine docker.io
 sudo apt install docker.io
 docker --version
-sudo apt-get install docker-compose
+# 2020-02-15: apt version of docker-compose does not support 3.8 docker-compose syntax
+# sudo apt-get install docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 sudo groupadd docker
 sudo usermod -aG docker $USER
@@ -157,6 +160,8 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 sudo apt update
 sudo apt-get install postgresql-12 postgresql-client-12
 sudo apt install pgadmin4
+# Below command was required to pip install psycopg2
+sudo apt-get install libpq5=12.9-0ubuntu0.20.04.1 && sudo apt-get install libpq-dev
 
 #Install mongodb
 wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -

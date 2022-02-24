@@ -87,6 +87,9 @@ docker-compose pull
 #run the containers
 docker-compose up
 
+#run a specific yaml configuration
+docker-compose -f docker-compose-dev.yaml up
+
 #rebuild a specific container
 docker-compose build web
 

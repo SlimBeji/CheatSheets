@@ -1,0 +1,29 @@
+{
+    "workbench.colorTheme": "Default Light+",
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length=80"
+    ],
+    "editor.formatOnSave": false,
+    "python.sortImports.args": [
+        "--profile=black"
+    ],
+    "python.linting.flake8Enabled": false,
+    "python.linting.flake8Args": [
+        "--max-line-length",
+        "80",
+        "--ignore=E203,E501,W503,W504"
+    ],
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "editor.fontSize": 13,
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.idea": true
+    },
+    "editor.minimap.enabled": false,
+    "python.terminal.activateEnvironment": false,
+}

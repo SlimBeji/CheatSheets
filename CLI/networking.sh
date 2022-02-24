@@ -29,8 +29,8 @@ lsof -i:22
 # ssh logging
 ssh user@host -p 22
 
-# generate a public and private keys
-ssh-keygen -t rsa
+# generate a public and private keys (use -f to specify file)
+ssh-keygen -t rsa - f ~/.ssh/company_id_rsa
 
 # copy public key to the server authorized_key of the server
 ssh-copy-id -i id_rsa.pub login@ip

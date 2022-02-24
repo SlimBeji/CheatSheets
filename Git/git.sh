@@ -30,9 +30,6 @@ git config --global merge.tool p4merge
 git config --global mergetool.prompt false
 
 # ========= Global configuration ===============
-# Clone a repository into a new directory
-git clone  https://github.com/../*.git
-
 # Create empty git repository. omit project name for existing folder
 git init project
 
@@ -287,6 +284,9 @@ git rebase --continue
 git rebase -i
 
 # =============== Remote Repository ==================
+# Clone a repository into a new directory
+git clone  https://github.com/../*.git
+
 # point the remote directory to the url and name it
 git remote add origin http_link_or_git_link
 

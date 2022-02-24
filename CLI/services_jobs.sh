@@ -1,4 +1,7 @@
 # ============= System and Planification ===============
+# list all services
+service --status-all
+
 # restart the service httpd (also start & stop)
 service httpd restart
 
