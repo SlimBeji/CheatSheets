@@ -44,8 +44,12 @@ sudo tar -xvf scangearmp2-3.50-1-deb.tar.gz
 sudo rm -rf scangearmp2-3.50-1-deb*
 #call scangearmp2
 
-#Install Git, SmartGit  and p4merge
+#Install Git, gh, SmartGit  and p4merge
 sudo apt-get install git
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+sudo apt update
+sudo apt install gh
 sudo apt-get install gitg
 sudo add-apt-repository ppa:eugenesan/ppa
 sudo apt-get update

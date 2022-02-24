@@ -13,6 +13,7 @@ virtual environment handling
 ## Git
 
 - list of useful git commands
+- list of useful gh commands
 - explanations about GitFlow concept
 
 ## Hosting
