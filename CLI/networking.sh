@@ -50,7 +50,7 @@ ftp ftp.debian.org
 # put to upload, get to download, rm/delete to delete
 ftp> put file / get file / delete file
 
-# use ! run commands inside the local folder, not ftp folder
+# use ! run commands.txt inside the local folder, not ftp folder
 ftp> !ls / !cd
 
 # secure ftp using ssh; prefix with o like oPort to specify port

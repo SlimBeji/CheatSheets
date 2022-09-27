@@ -1,5 +1,5 @@
 # =========== Compression and execution ===============
-# create the tar tuto.tar from dir
+# create the tar tuto.tar from dir (-c for destination)
 tar -cf tuto.tar dir/
 
 # get what inside the tar
@@ -8,7 +8,7 @@ tar -tf tuto.tar
 # add file3 to the tar file
 tar -rf tuto.tar file3
 
-# un-tar the file (-v for verbose, use -c tospecify location)
+# un-tar the file (-v for verbose, use -c to specify location)
 tar -xvf tuto.tar
 
 # compress the tar file with gzip
@@ -23,11 +23,17 @@ gunzip tuto.tar.gz
 # unzip the tuto.tar.bz2 to a tar file
 bunzip2 tuto.tar.bz2
 
+# untar un unzip
+tar -xvzf /path/to/yourfile.tgz
+
 # tar and gzip from /dir to tuto.tar.gz
 tar -zcf tuto.tar.gz /dir
 
 # tar and bzip2 from /dir to tuto.tar.bz2
 tar -jcf tuto.tar.bz2 /dir
+
+# un-tar and unzip with gunzip
+tar xvfz scangearmp2-3.50-1-deb.tar.gz
 
 # create zip file -r recursively from dir/
 zip -r tuto.zip dir/

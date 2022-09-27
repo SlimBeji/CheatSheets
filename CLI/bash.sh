@@ -7,6 +7,12 @@ chmod +x file
 # export the variable and make available for scripts
 export MYVAR
 
+# set environment variable
+export DB_URL=a_db_url
+
+# unset an environment variable
+unset DB_URL
+
 # . source the script and make the variables exported to bash
 . ./file.sh
 

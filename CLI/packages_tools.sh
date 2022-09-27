@@ -45,7 +45,7 @@ wget --background -c http://link
 # show time
 date
 
-# open the manual of mkdir or anu other commands
+# open the manual of mkdir or anu other commands.txt
 man mkdir
 
 # run the command,  detattached to the console (better than &)

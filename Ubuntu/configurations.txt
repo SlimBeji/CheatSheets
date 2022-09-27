@@ -1,0 +1,9 @@
+https://askubuntu.com/questions/1395094/ubuntu-20-04-screen-recorder-dconf-editor-vs-gsettings
+
+
+
+# Change default screen recording max length
+# https://askubuntu.com/questions/919807/how-to-change-screencast-duration-in-gnome-3-screen-recorder
+# The below solution is not working => needs to check why and how to use dconf
+gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 1800
+

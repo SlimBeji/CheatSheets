@@ -7,6 +7,7 @@ sudo apt-get install gnome-software
 #Removing Snap
 sudo apt autoremove --purge snapd gnome-software-plugin-snap
 rm -fr ~/snap
+# consider keeping snap but hiding the directory
 
 #Adding Empty Document Shortcut
 mkdir -p ~/Templates && touch ~/Templates/Untitled\ Document;
@@ -18,6 +19,12 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo apt install ./google-chrome-stable_current_amd64.deb
 rm google-chrome-stable_current_amd64.deb
 
+#Install NordVPN
+sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
+sudo usermod -aG nordvpn $USER
+# Restart
+nordvpn connect fr753
+
 #Install Clementine for Music
 sudo apt install akonadi-backend-sqlite
 sudo apt-get install clementine
@@ -27,22 +34,25 @@ wget https://go.skype.com/skypeforlinux-64.deb
 sudo apt install ./skypeforlinux-64.deb
 rm ./skypeforlinux-64.deb
 
-# Install Upwork tracking time
-wget https://upwork-usw2-desktopapp.upwork.com/binaries/v5_6_8_0_836f43f6f6be4149/upwork_5.6.8.0_amd64.deb
-sudo apt install ./upwork_5.6.8.0_amd64.deb
-sudo rm upwork_5.6.8.0_amd64.deb
+# Install BlueJeans
+wget https://swdl.bluejeans.com/desktop-app/linux/2.30.0/BlueJeans_2.30.0.89.deb
+sudo apt install BlueJeans_2.30.0.89.deb
+rm BlueJeans_2.30.0.89.deb
+# add BluejeansHelper.log to .hidden in home directory
 
-#Configure printing and scan device
-sudo apt-get install simple-scan
-wget http://gdlp01.c-wss.com/gds/8/0100009108/01/cnijfilter2-5.50-1-deb.tar.gz
-sudo tar -xvf cnijfilter2-5.50-1-deb.tar.gz
-./cnijfilter2-5.50-1-deb/install.sh
-sudo rm -rf cnijfilter2-5.50-1-deb*
-wget http://gdlp01.c-wss.com/gds/1/0100009111/01/scangearmp2-3.50-1-deb.tar.gz
-sudo tar -xvf scangearmp2-3.50-1-deb.tar.gz
-./scangearmp2-3.50-1-deb/install.sh
-sudo rm -rf scangearmp2-3.50-1-deb*
-#call scangearmp2
+# Install Zoom
+wget https://toptal.zoom.us/client/latest/zoom_amd64.deb
+sudo apt install ./zoom_amd64.deb
+rm ./zoom_amd64.deb
+
+# Install Upwork tracking time
+wget https://upwork-usw2-desktopapp.upwork.com/binaries/v5_6_10_1_de501d28cc034306/upwork_5.6.10.1_amd64.deb
+sudo sudo apt install ./upwork_5.6.10.1_amd64.deb
+sudo rm upwork_5.6.10.1_amd64.deb
+
+# Install Slack
+# Download lib from this link https://slack.com/downloads/linux
+sudo apt install ./slack-desktop-4.24.0-amd64.deb 
 
 #Install Git, gh, SmartGit  and p4merge
 sudo apt-get install git
@@ -60,6 +70,22 @@ sudo cp -r p4v-* /usr/local/p4v/
 sudo ln -s /usr/local/p4v/bin/p4merge /usr/local/bin/p4merge
 rm p4v.tgz
 rm -r p4v-*
+
+#Install nodejs + nvm + yarn + npm
+sudo apt-get install nodejs
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+# close terminal
+exit
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn
+sudo apt-get install npm
+node i -g ijavascript
+ijsinstall --spec-path=full
 
 #Install Anaconda (Visit https://www.anaconda.com/products/individual)
 sudo apt-get install curl
@@ -95,6 +121,11 @@ sudo apt update
 sudo apt install sublime-text
 # Install packages
 
+# Install ngrok
+curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install ngrok
+ngrok authtoken 26SQQ1zBRMN7wnS5evZbSa4MNvX_EQNpXhkibrq5p2CqhWdP
+ngrok http 8080
+
 # Install postman
 wget https://dl.pstmn.io/download/latest/linux64
 sudo mkdir /opt/postman
@@ -119,20 +150,6 @@ echo 'eval "$(pyenv init --path)"' >> ~/.bashrc
 echo 'eval "$(pyenv init -)"' >> ~/.bashrc
 exec $SHELL
 pyenv update
-
-#Install nodejs + nvm + yarn + npm
-sudo apt-get install nodejs
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-# close terminal
-exit
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update
-sudo apt install yarn
-sudo apt-get install npm
 
 #install nginx server
 sudo apt-get install nginx
@@ -191,4 +208,11 @@ sudo ln -s /opt/another-redis-desktop-manager/another-redis-desktop-manager.AppI
 sudo apt-get install awscli
 
 #install heroku-cli
-curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+sudo wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+#install latex
+sudo apt-get -y install texlive-latex-extra
+sudo apt-get install texstudio
+
+# install printer
+sudo apt -y install printer-driver-all

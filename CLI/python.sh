@@ -1,5 +1,5 @@
 # ================= Python ===============
-# ================= pip commands ===============
+# ================= pip commands.txt ===============
 # Install package
 pip install package==1.1.1
 
@@ -15,7 +15,7 @@ pip show my_package
 # Create requirements.txt
 pip freeze > requirements.txt
 
-# ================= venv/pyenv commands ===============
+# ================= venv/pyenv commands.txt ===============
 # Create a venv with systemversion
 python -m venv my_project
 
@@ -55,7 +55,7 @@ pyenv which python
 # Deactivate version
 pyenv deactivate
 
-# ================= venv/pyenv commands ===============
+# ================= venv/pyenv commands.txt ===============
 # Runs lock(Generates Pipfile.lock.), then sync(install packages).
 pipenv update
 

@@ -1,0 +1,12 @@
+######## Containers section ##############
+# create a devcontainer.json
+Add Development Configuration files
+
+# select the services to run
+Compose Up Select
+
+# Run vscode inside the micro service
+Attach to running container
+
+# Reopen the project in container
+Reopen In Container
