@@ -18,13 +18,16 @@ telnet localhost 5433
 netstat -paunt
 
 # open connections with LISTEN status
-netstat -l
+netstat -tulpn | grep :80
+
+# list open files, -i for internet port 22; grep LISTEN to filter
+lsof -i:22
 
 # list user using files, -n namespace, tcp 80 for protocol+port
 fuser -n tcp 80
 
-# list open files, -i for internet port 22; grep LISTEN to filter
-lsof -i:22
+# kill services running on port 80
+fuser -k tcp/80
 
 # ssh logging
 ssh user@host -p 22
