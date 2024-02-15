@@ -90,6 +90,9 @@ pipenv shell
 pipenv --rm
 
 # ================= conda ===============
+# Instll a specific version for the base environment
+conda install python=3.11
+
 # Clean all unsued packages versions
 conda clean --all
 
